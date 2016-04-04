@@ -2,19 +2,19 @@
 
 1.1 POST
 
-Method____________POST
-Request____________/UserRegister/ (User é a entidade, register e a operação. Então aqui deveria ser /user?<params>)
+Method_____________POST
+Request____________/user?<params>
 Parameters_________name, last name, bith date, biographi, email, login, password
-Specification________User register 
-Example___________http://raise-uiot-ip/userregister      (está falatando no exemplo os parâmetros)              
+Specification______Register a new use 
+Example____________http://raise-uiot-ip/user?name=Fabio&lastname=Moreira&birthdate=25101993&biographi=estudante&email=fabio@fabio&login=fabioc&password=******              
 			REQUEST 1.1.1 Post personal informations
 1.2 GET
 
-Method____________GET
-Request____________/UserProfile/ (veja acima)
-Parameters_________none
-Specification________Return a json personal informations
-Example___________http://raise-uiot-ip/userprofile (veja acima)
+Method_____________GET
+Request____________/user?<params>
+Parameters_________userid
+Specification______Return a json personal informations 
+Example____________http://raise-uiot-ip/user?userid=001
 			REQUEST 1.2.1 Get personal informations
 
 2 Friends
@@ -22,18 +22,18 @@ Example___________http://raise-uiot-ip/userprofile (veja acima)
 2.1 GET
 
 Method____________GET
-Request____________/Friends/
+Request____________/friends/
 Parameters_________none
-Specification________Return ajson an array of all friends
-Example___________http://raise-uiot-ip/friends  
+Specification______Return ajson an array of all friends
+Example____________http://raise-uiot-ip/friends  
 			REQUEST 2.1.1 Get all friends
 
 
 Method____________GET
-Request____________/Friends/<name>/
-Parameters_________
-Specification________Return a json user profile selected
-Example___________http://raise-uiot-ip/friends/18  (vai utilizar o nome ou o ID?)
+Request___________/friends/<params>/
+Parameters________friendName
+Specification_____Return a json user profile selected
+Example___________http://raise-uiot-ip/friends?friendName=Nayara
 			REQUEST 2.1.2 Get profile friend by name
 
 3 Publications
@@ -41,19 +41,19 @@ Example___________http://raise-uiot-ip/friends/18  (vai utilizar o nome ou o ID?
 3.1 GET
 
 Method____________GET
-Request____________/Publications/
-Parameters_________
-Specification________Return a json with an all publications 
+Request___________/publications/
+Parameters________
+Specification_____Return a json with an all publications 
 Example___________http://raise-uiot-ip/publications
 			REQUEST 1.1.3 Get all publications
 
 3.2 POST
 
 Method____________POST
-Request____________/Publications/  
-Parameters_________  (para cadastrar uma publiação não são necessários parâmetros?)
-Specification________Post new publication 
-Example___________http://raise-uiot-ip/publications
+Request___________/publications?<parameters>  
+Parameters________allFriends
+Specification_____Post new publication 
+Example___________http://raise-uiot-ip/publications?allfriends
 			REQUEST 1.1.3 Post a new publication
 
 4 Message
@@ -61,19 +61,19 @@ Example___________http://raise-uiot-ip/publications
 4.1 POST
 
 Method____________POST
-Request____________/Message/
-Parameters_________name friend
-Specification________Send Message To friend selected.
-Example___________http://raise-uiot-ip/message/ (a mensagem precisa do nome de quem envia e de quem recebe)
+Request___________/message/
+Parameters________name friend
+Specification_____Send Message To friend selected.
+Example___________http://raise-uiot-ip/message/* (a mensagem precisa do nome de quem envia e de quem recebe)*
 			REQUEST 1.1.3 Post message friend specified
 
 4.2 GET
 
 Method____________GET
-Request____________/Message/
-Parameters_________ (id de quem deseja ver as mensagens, e o id de qual amigo quer ver as mensagens)
-Specification________Return a json with an array of all messages 
-Example___________http://raise-uiot-ip/message 
+Request___________/message/
+Parameters________ (id de quem deseja ver as mensagens, e o id de qual amigo quer ver as mensagens)
+Specification_____Return a json with an array of all messages 
+Example___________http://raise-uiot-ip/message* 
 		REQUEST 1.1.3 Get all messages
 
 5 Table Exercises
@@ -81,36 +81,30 @@ Example___________http://raise-uiot-ip/message
 5.1 POST
 
 Method____________POST
-Request____________/TableExercises/
-Parameters_________date to exchange the fixed , exercises every day of the week. (???)
-Specification________creates a new set of exercises 
-Example___________http://raise-uiot-ip/tableexercises/
+Request___________/TableExercises/
+Parameters________tableexercisesID, personname, expiredate, exercises.
+Specification_____creates a new set of exercises 
+Example___________http://raise-uiot-ip/tableexercises?expiredate=30dias&exercises=supino...
 		REQUEST 5.1.1 Post new table exercises
 
 5.2 GET
 
-Method____________GET
+Method_____________GET
 Request____________/TableExercises/
-Parameters_________remaining time to exchange the fixed , exercises every day of the week.
-Specification________listar toda serie de exercicios.
-Example___________http://raise-uiot-ip/tableexercise
+Parameters_________tableexercisesID, peopleName
+Specification______display of current exercises series. historical display of exercises
+Example____________http://raise-uiot-ip/tableexercise?tableexercisesid?001&personname=Fabio&expiratedate=25072016&exercises=supino...
 		REQUEST 5.2.1 Get table exercises personal
 
 
-Method____________GET
-Request____________/TableExercises/ (qual a diferença dessa requisição para a que está acima?)
-Parameters_________
-Specification________list received exercise tables.
-Example___________http://raise-uiot-ip/historicofixas
-		REQUEST 5.2.2 Get all table exercises
 
 5.3 PUT
 
 Method____________PUT
-Request____________/TableExercises/
-Parameters_________ (quais são os parâmetros que serão passados para atualizar uma table?)
-Specification________update current exercises table.
-Example___________http://raise-uiot-ip/tableexercises/action
+Request___________/TableExercises/
+Parameters________tableexercisesID, personName
+Specification_____update current exercises table.
+Example___________http://raise-uiot-ip/tableexercises?tableexercisesID=001&personname=Fabio
 		REQUEST 5.3.1 Put table exercises
 
 
