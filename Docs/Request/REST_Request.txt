@@ -1,0 +1,116 @@
+1 User
+
+1.1 POST
+
+Method____________POST
+Request____________/UserRegister/
+Parameters_________name, last name, bith date, biographi, email, login, password
+Specification________User register 
+Example___________http://raise-uiot-ip/userregister
+			REQUEST 1.1.1 Post personal informations
+1.2 GET
+
+Method____________GET
+Request____________/UserProfile/
+Parameters_________none
+Specification________Return a json personal informations
+Example___________http://raise-uiot-ip/userprofile
+			REQUEST 1.2.1 Get personal informations
+
+2 Friends
+
+2.1 GET
+
+Method____________GET
+Request____________/Friends/
+Parameters_________none
+Specification________Return ajson an array of all friends
+Example___________http://raise-uiot-ip/friends
+			REQUEST 2.1.1 Get all friends
+
+
+Method____________GET
+Request____________/Friends/<name>/
+Parameters_________
+Specification________Return a json user profile selected
+Example___________http://raise-uiot-ip/friends/18
+			REQUEST 2.1.2 Get profile friend by name
+
+3 Publications
+
+3.1 GET
+
+Method____________GET
+Request____________/Publications/
+Parameters_________
+Specification________Return a json with an all publications 
+Example___________http://raise-uiot-ip/publications
+			REQUEST 1.1.3 Get all publications
+
+3.2 POST
+
+Method____________POST
+Request____________/Publications/
+Parameters_________
+Specification________Post new publication 
+Example___________http://raise-uiot-ip/publications
+			REQUEST 1.1.3 Post a new publication
+
+4 Message
+
+4.1 POST
+
+Method____________POST
+Request____________/Message/
+Parameters_________name friend
+Specification________Send Message To friend selected.
+Example___________http://raise-uiot-ip/message/
+			REQUEST 1.1.3 Post message friend specified
+
+4.2 GET
+
+Method____________GET
+Request____________/Message/
+Parameters_________
+Specification________Return a json with an array of all messages 
+Example___________http://raise-uiot-ip/message
+		REQUEST 1.1.3 Get all messages
+
+5 Table Exercises
+
+5.1 POST
+
+Method____________POST
+Request____________/TableExercises/
+Parameters_________date to exchange the fixed , exercises every day of the week.
+Specification________creates a new set of exercises 
+Example___________http://raise-uiot-ip/tableexercises/
+		REQUEST 5.1.1 Post new table exercises
+
+5.2 GET
+
+Method____________GET
+Request____________/TableExercises/
+Parameters_________remaining time to exchange the fixed , exercises every day of the week.
+Specification________listar toda serie de exercicios.
+Example___________http://raise-uiot-ip/tableexercise
+		REQUEST 5.2.1 Get table exercises personal
+
+
+Method____________GET
+Request____________/TableExercises/
+Parameters_________
+Specification________list received exercise tables.
+Example___________http://raise-uiot-ip/historicofixas
+		REQUEST 5.2.2 Get all table exercises
+
+5.3 PUT
+
+Method____________PUT
+Request____________/TableExercises/
+Parameters_________
+Specification________update current exercises table.
+Example___________http://raise-uiot-ip/tableexercises/action
+		REQUEST 5.3.1 Put table exercises
+
+
