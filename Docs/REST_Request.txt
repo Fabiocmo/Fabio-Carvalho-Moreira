@@ -34,23 +34,23 @@ Example____________http://example.com/searchuser?username:Fabio
 3 Friends
 
 
-3.1 GET
+3.1.1 GET
 
 Method____________GET
 Request____________/friends
 Parameters_________none
 Specification______Return a json an array of all friends 
 Example____________http://example.com/friends
-			REQUEST 3.1.1 Get all friends
+			REQUEST 3.1.1.1 Get all friends
 
-3.1 GET
+3.1.2 GET
 
 Method____________GET
 Request___________/friends/<params>/
 Parameters________friendName
 Specification_____Return a json user profile selected
 Example___________http://example.com/friends?friendName=Fabio
-			REQUEST 3.1.2 Get profile friend by name
+			REQUEST 3.1.2.1 Get profile friend by name
 
 4 Publications
 
@@ -72,14 +72,14 @@ Specification_____Return all publications on my profile
 Example___________http://example.com/publications
 			REQUEST 4.2.1 Get all publications on my profile
 		
-4.3 GET
+4.2.1 GET
 
 Method____________GET
 Request___________/friends/publications?<params>
 Parameters________friendName, IDpublication
 Specification_____Return to all publications of the selected profile
 Example___________http://example.com/friends/publications?friendName=Fabio&IDpublication=001
-			REQUEST 4.2.2 Get all publications by UserName and IDpublications
+			REQUEST 4.2.1.1 Get all publications by UserName and IDpublications
 
 5 Message
 
@@ -90,7 +90,7 @@ Request___________/message?<params>
 Parameters________userName, friendName
 Specification_____Send Message To friend selected.
 Example___________http://example.com/message?userName=Fabio&friendName=Nayara
-			REQUEST 1.1.3 Post message friend specified
+			REQUEST 5.1.1 Post message friend specified
 
 5.2 GET
 
@@ -99,7 +99,7 @@ Request___________/message/
 Parameters________userName, IDfriend
 Specification_____Return a json with an array of all messages 
 Example___________http://example.com/message?userName=Fabio&IDfriend=29
-		REQUEST 1.1.3 Get all messages
+		REQUEST 5.2.1 Get all messages
 
 6 Chart Exercises
 
@@ -110,7 +110,7 @@ Request___________/ChartExercises?params>
 Parameters________chartExercisesID, userName, nameFriend, expiredate, exercises.
 Specification_____creates a new set of exercises. send a friend a new series of exercises
 Example___________http://example.com/chartexercises?userName=Fabio&expiredate=30&exercises=supino
-		REQUEST 5.1.1 Post new chart exercises
+		REQUEST 6.1.1 Post new chart exercises
 
 6.2 GET
 
@@ -119,26 +119,26 @@ Request____________/ChartExercises/
 Parameters_________ userName, chartexercisesID, exercises
 Specification______display current exercises series. historical display of exercises
 Example____________http://example.com/tableexercise?&userName=Fabio&chartercisesid=001&expiratedate=25072016&exercises=supino
-		REQUEST 5.2.1 Get all chart of exercises (activated and deactivated)
+		REQUEST 6.2.1 Get all chart of exercises (activated and deactivated)
 		
-6.3 GET
+6.2.1 GET
 
 Method_____________GET
 Request____________/friends/ChartExercises/
 Parameters_________ userName, IDfriend, chartexercisesID, exercises
 Specification______display current exercises series. 
 Example____________http://example.com/tableexercise?&userName=Fabio&IDfriend=004&chartercisesid=001&exercises=supino
-		REQUEST 5.2.1 Get chart exercises of friend
+		REQUEST 6.2.1.1 Get chart exercises of friend
 
 
 
-6.4 PUT
+6.3 PUT
 
 Method____________PUT
 Request___________/ChartExercises/
 Parameters________userName, chartexercisesID
 Specification_____update current exercises chart.
 Example___________http://example.com/chartexercises?userName=Fabio&tableexercisesID=001
-		REQUEST 5.3.1 Put chart exercises
+		REQUEST 6.3.1 Put chart exercises
 
 
