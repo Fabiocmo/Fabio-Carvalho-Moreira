@@ -41,16 +41,16 @@ Request____________/friends
 Parameters_________none
 Specification______Return a json an array of all friends 
 Example____________http://example.com/friends
-			REQUEST 2.1.1 Get all friends
+			REQUEST 3.1.1 Get all friends
 
-3.2 GET
+3.1 GET
 
 Method____________GET
 Request___________/friends/<params>/
 Parameters________friendName
 Specification_____Return a json user profile selected
 Example___________http://example.com/friends?friendName=Fabio
-			REQUEST 2.1.2 Get profile friend by name
+			REQUEST 3.1.2 Get profile friend by name
 
 4 Publications
 
@@ -61,7 +61,7 @@ Request___________/publications?<params>/
 Parameters________userName, dateHour, IDpublication
 Specification_____post a new publication
 Example___________http://example.com/publications?userName=Fabio&IDpublication=001
-			REQUEST 1.1.3 Post new publication
+			REQUEST 4.1.1 Post new publication
 
 4.2 GET
 
@@ -70,7 +70,7 @@ Request___________/publications?<params>
 Parameters________none
 Specification_____Return all publications on my profile
 Example___________http://example.com/publications
-			REQUEST 1.1.3 Get all publications on my profile
+			REQUEST 4.2.1 Get all publications on my profile
 		
 4.3 GET
 
@@ -79,7 +79,7 @@ Request___________/friends/publications?<params>
 Parameters________friendName, IDpublication
 Specification_____Return to all publications of the selected profile
 Example___________http://example.com/friends/publications?friendName=Fabio&IDpublication=001
-			REQUEST 1.1.3 Get all publications by UserName and IDpublications
+			REQUEST 4.2.2 Get all publications by UserName and IDpublications
 
 5 Message
 
@@ -116,10 +116,10 @@ Example___________http://example.com/chartexercises?userName=Fabio&expiredate=30
 
 Method_____________GET
 Request____________/ChartExercises/
-Parameters_________ userName, IDfriend, chartexercisesID, exercises
+Parameters_________ userName, chartexercisesID, exercises
 Specification______display current exercises series. historical display of exercises
-Example____________http://example.com/tableexercise?&userName=Fabio&IDfriend=004&chartercisesid=001&expiratedate=25072016&exercises=supino
-		REQUEST 5.2.1 Get all userName chart of exercises (activated and deactivated)
+Example____________http://example.com/tableexercise?&userName=Fabio&chartercisesid=001&expiratedate=25072016&exercises=supino
+		REQUEST 5.2.1 Get all chart of exercises (activated and deactivated)
 		
 6.3 GET
 
@@ -128,7 +128,7 @@ Request____________/friends/ChartExercises/
 Parameters_________ userName, IDfriend, chartexercisesID, exercises
 Specification______display current exercises series. 
 Example____________http://example.com/tableexercise?&userName=Fabio&IDfriend=004&chartercisesid=001&exercises=supino
-		REQUEST 5.2.1 Get all userName chart of exercises (activated and deactivated)
+		REQUEST 5.2.1 Get chart exercises of friend
 
 
 
