@@ -58,15 +58,9 @@ Example___________http://example.com/friends?friendName=Fabio
 
 Method____________POST
 Request___________/publications?<params>/
-<<<<<<< HEAD
-Parameters________userName, dateHour, IDpublication
-Specification_____post a new publication
-Example___________http://example.com/publications?userName=Fabio&IDpublication=001
-=======
 Parameters________userName
 Specification_____post a new publication in profile personal
 Example___________http://example.com/publications?userName=Fabio
->>>>>>> origin/master
 			REQUEST 4.1.1 Post new publication
 
 4.2 GET
@@ -102,15 +96,9 @@ Example___________http://example.com/message?userName=Fabio&friendName=Nayara
 
 Method____________GET
 Request___________/message/
-<<<<<<< HEAD
-Parameters________userName, IDfriend
-Specification_____Return a json with an array of all messages 
-Example___________http://example.com/message?userName=Fabio&IDfriend=29
-=======
 Parameters________userName, friendName, messageId
 Specification_____Return a json with an array of all messages 
 Example___________http://example.com/message?userName=Fabio&friendName=Nayara&messageId=1000
->>>>>>> origin/master
 		REQUEST 5.2.1 Get all messages
 
 6 Chart Exercises
@@ -118,29 +106,13 @@ Example___________http://example.com/message?userName=Fabio&friendName=Nayara&me
 6.1 POST
 
 Method____________POST
-<<<<<<< HEAD
-Request___________/ChartExercises?params>
-Parameters________chartExercisesID, userName, nameFriend, expiredate, exercises.
-=======
 Request___________/ChartExercises?<params>
 Parameters________userName, nameFriend, expiredate, exercises.
->>>>>>> origin/master
 Specification_____creates a new set of exercises. send a friend a new series of exercises
 Example___________http://example.com/chartexercises?userName=Fabio&expiredate=30&exercises=supino
 		REQUEST 6.1.1 Post new chart exercises
 
 6.2 GET
-<<<<<<< HEAD
-
-Method_____________GET
-Request____________/ChartExercises/
-Parameters_________ userName, chartexercisesID, exercises
-Specification______display current exercises series. historical display of exercises
-Example____________http://example.com/tableexercise?&userName=Fabio&chartercisesid=001&expiratedate=25072016&exercises=supino
-		REQUEST 6.2.1 Get all chart of exercises (activated and deactivated)
-		
-6.2.1 GET
-=======
 
 Method_____________GET
 Request____________/ChartExercises/
@@ -157,20 +129,9 @@ Parameters_________userName, IDfriend, chartexercisesID, exercises
 Specification______display current exercises series. 
 Example____________http://example.com/chartexercise?&userName=Fabio&IDfriend=004&chartercisesid=001&exercises=supino
 		REQUEST 6.2.1.1 Get chart exercises of friend
->>>>>>> origin/master
-
-Method_____________GET
-Request____________/friends/ChartExercises/
-Parameters_________ userName, IDfriend, chartexercisesID, exercises
-Specification______display current exercises series. 
-Example____________http://example.com/tableexercise?&userName=Fabio&IDfriend=004&chartercisesid=001&exercises=supino
-		REQUEST 6.2.1.1 Get chart exercises of friend
 
 
-<<<<<<< HEAD
 
-6.3 PUT
-=======
 6.3 PUT
 
 Method____________PUT
@@ -179,12 +140,3 @@ Parameters________userName, chartexercisesID
 Specification_____update current exercises chart.
 Example___________http://example.com/chartexercises?userName=Fabio&tableexercisesID=001
 		REQUEST 6.3.1 Put chart exercises
->>>>>>> origin/master
-
-Method____________PUT
-Request___________/ChartExercises/
-Parameters________userName, chartexercisesID
-Specification_____update current exercises chart.
-Example___________http://example.com/chartexercises?userName=Fabio&tableexercisesID=001
-		REQUEST 6.3.1 Put chart exercises
-
