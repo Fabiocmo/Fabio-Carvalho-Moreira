@@ -96,9 +96,9 @@ Example___________http://example.com/message?userName=Fabio&friendName=Nayara
 
 Method____________GET
 Request___________/message/
-Parameters________userName, IDfriend
+Parameters________userName, friendName, messageId
 Specification_____Return a json with an array of all messages 
-Example___________http://example.com/message?userName=Fabio&IDfriend=29
+Example___________http://example.com/message?userName=Fabio&friendName=Nayara&messageId=1000
 		REQUEST 5.2.1 Get all messages
 
 6 Chart Exercises
