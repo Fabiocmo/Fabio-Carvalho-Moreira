@@ -58,9 +58,9 @@ Example___________http://example.com/friends?friendName=Fabio
 
 Method____________POST
 Request___________/publications?<params>/
-Parameters________userName, dateHour, IDpublication
-Specification_____post a new publication
-Example___________http://example.com/publications?userName=Fabio&IDpublication=001
+Parameters________userName
+Specification_____post a new publication in profile personal
+Example___________http://example.com/publications?userName=Fabio
 			REQUEST 4.1.1 Post new publication
 
 4.2 GET
