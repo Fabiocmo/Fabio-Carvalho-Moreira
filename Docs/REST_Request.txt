@@ -72,14 +72,14 @@ Specification_____Return all publications on my profile
 Example___________http://example.com/publications
 			REQUEST 4.2.1 Get all publications on my profile
 		
-4.2.1 GET
+4.3 GET
 
 Method____________GET
 Request___________/friends/publications?<params>
 Parameters________friendName, IDpublication
 Specification_____Return to all publications of the selected profile
 Example___________http://example.com/friends/publications?friendName=Fabio&IDpublication=001
-			REQUEST 4.2.1.1 Get all publications by UserName and IDpublications
+			REQUEST 4.3.1 Get all publications by UserName and IDpublications
 
 5 Message
 
