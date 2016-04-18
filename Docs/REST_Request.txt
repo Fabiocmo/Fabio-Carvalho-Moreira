@@ -4,107 +4,140 @@
 
 Method_____________POST
 Request____________/user?<params>
-Parameters_________name, last name, bith date, biographi, email, login, password
-Specification______Register a new use 
-Example____________http://raise-uiot-ip/user?name=Fabio&lastname=Moreira&birthdate=25101993&biographi=estudante&email=fabio@fabio&login=fabioc&password=******              
-			REQUEST 1.1.1 Post personal informations
+Parameters_________userName, lastName, bithDate, biographi, email, login, password
+Specification______Register a new user
+Example____________http://example.com/user?username=Fabio&lastname=Moreira&birthdate=25101993&biographi=estudante&email=fabio@fabio&login=Fabioc&password=******              
+			REQUEST 1.1.1 New User Register
+		
 1.2 GET
 
 Method_____________GET
 Request____________/user?<params>
-Parameters_________userid
-Specification______Return a json personal informations 
-Example____________http://raise-uiot-ip/user?userid=001
+Parameters_________login, password
+Specification______return User data 
+Example____________http://example.com/user?login=Fabioc&password=******
 			REQUEST 1.2.1 Get personal informations
 
-2 Friends
+
+2 Search User
 
 2.1 GET
 
-Method____________GET
-Request____________/friends/
-Parameters_________none
-Specification______Return ajson an array of all friends
-Example____________http://raise-uiot-ip/friends  
-			REQUEST 2.1.1 Get all friends
+Method_____________GET
+Request____________/searchUser?<params>
+Parameters_________userName or lastName
+Specification______Return a json an array of all users by name or lastName
+Example____________http://example.com/searchuser?username:Fabio
+			REQUEST 2.1.1 Get specified users
 
+
+3 Friends
+
+
+3.1.1 GET
+
+Method____________GET
+Request____________/friends
+Parameters_________none
+Specification______Return a json an array of all friends 
+Example____________http://example.com/friends
+			REQUEST 3.1.1.1 Get all friends
+
+3.1.2 GET
 
 Method____________GET
 Request___________/friends/<params>/
 Parameters________friendName
 Specification_____Return a json user profile selected
-Example___________http://raise-uiot-ip/friends?friendName=Nayara
-			REQUEST 2.1.2 Get profile friend by name
+Example___________http://example.com/friends?friendName=Fabio
+			REQUEST 3.1.2.1 Get profile friend by name
 
-3 Publications
-
-3.1 GET
-
-Method____________GET
-Request___________/publications/
-Parameters________
-Specification_____Return a json with an all publications 
-Example___________http://raise-uiot-ip/publications
-			REQUEST 1.1.3 Get all publications
-
-3.2 POST
-
-Method____________POST
-Request___________/publications?<parameters>  
-Parameters________allFriends
-Specification_____Post new publication 
-Example___________http://raise-uiot-ip/publications?allfriends
-			REQUEST 1.1.3 Post a new publication
-
-4 Message
+4 Publications
 
 4.1 POST
 
 Method____________POST
-Request___________/message/
-Parameters________name friend
-Specification_____Send Message To friend selected.
-Example___________http://raise-uiot-ip/message/* (a mensagem precisa do nome de quem envia e de quem recebe)*
-			REQUEST 1.1.3 Post message friend specified
+Request___________/publications?<params>/
+Parameters________userName, dateHour, IDpublication
+Specification_____post a new publication
+Example___________http://example.com/publications?userName=Fabio&IDpublication=001
+			REQUEST 4.1.1 Post new publication
 
 4.2 GET
 
 Method____________GET
-Request___________/message/
-Parameters________ (id de quem deseja ver as mensagens, e o id de qual amigo quer ver as mensagens)
-Specification_____Return a json with an array of all messages 
-Example___________http://raise-uiot-ip/message* 
-		REQUEST 1.1.3 Get all messages
+Request___________/publications?<params>
+Parameters________none
+Specification_____Return all publications on my profile
+Example___________http://example.com/publications
+			REQUEST 4.2.1 Get all publications on my profile
+		
+4.2.1 GET
 
-5 Table Exercises
+Method____________GET
+Request___________/friends/publications?<params>
+Parameters________friendName, IDpublication
+Specification_____Return to all publications of the selected profile
+Example___________http://example.com/friends/publications?friendName=Fabio&IDpublication=001
+			REQUEST 4.2.1.1 Get all publications by UserName and IDpublications
+
+5 Message
 
 5.1 POST
 
 Method____________POST
-Request___________/TableExercises/
-Parameters________tableexercisesID, personname, expiredate, exercises.
-Specification_____creates a new set of exercises 
-Example___________http://raise-uiot-ip/tableexercises?expiredate=30dias&exercises=supino...
-		REQUEST 5.1.1 Post new table exercises
+Request___________/message?<params>
+Parameters________userName, friendName
+Specification_____Send Message To friend selected.
+Example___________http://example.com/message?userName=Fabio&friendName=Nayara
+			REQUEST 5.1.1 Post message friend specified
 
 5.2 GET
 
+Method____________GET
+Request___________/message/
+Parameters________userName, IDfriend
+Specification_____Return a json with an array of all messages 
+Example___________http://example.com/message?userName=Fabio&IDfriend=29
+		REQUEST 5.2.1 Get all messages
+
+6 Chart Exercises
+
+6.1 POST
+
+Method____________POST
+Request___________/ChartExercises?params>
+Parameters________chartExercisesID, userName, nameFriend, expiredate, exercises.
+Specification_____creates a new set of exercises. send a friend a new series of exercises
+Example___________http://example.com/chartexercises?userName=Fabio&expiredate=30&exercises=supino
+		REQUEST 6.1.1 Post new chart exercises
+
+6.2 GET
+
 Method_____________GET
-Request____________/TableExercises/
-Parameters_________tableexercisesID, peopleName
-Specification______display of current exercises series. historical display of exercises
-Example____________http://raise-uiot-ip/tableexercise?tableexercisesid?001&personname=Fabio&expiratedate=25072016&exercises=supino...
-		REQUEST 5.2.1 Get table exercises personal
+Request____________/ChartExercises/
+Parameters_________ userName, chartexercisesID, exercises
+Specification______display current exercises series. historical display of exercises
+Example____________http://example.com/tableexercise?&userName=Fabio&chartercisesid=001&expiratedate=25072016&exercises=supino
+		REQUEST 6.2.1 Get all chart of exercises (activated and deactivated)
+		
+6.2.1 GET
+
+Method_____________GET
+Request____________/friends/ChartExercises/
+Parameters_________ userName, IDfriend, chartexercisesID, exercises
+Specification______display current exercises series. 
+Example____________http://example.com/tableexercise?&userName=Fabio&IDfriend=004&chartercisesid=001&exercises=supino
+		REQUEST 6.2.1.1 Get chart exercises of friend
 
 
 
-5.3 PUT
+6.3 PUT
 
 Method____________PUT
-Request___________/TableExercises/
-Parameters________tableexercisesID, personName
-Specification_____update current exercises table.
-Example___________http://raise-uiot-ip/tableexercises?tableexercisesID=001&personname=Fabio
-		REQUEST 5.3.1 Put table exercises
-
+Request___________/ChartExercises/
+Parameters________userName, chartexercisesID
+Specification_____update current exercises chart.
+Example___________http://example.com/chartexercises?userName=Fabio&tableexercisesID=001
+		REQUEST 6.3.1 Put chart exercises
 
