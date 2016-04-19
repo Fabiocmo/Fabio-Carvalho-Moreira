@@ -1,12 +1,12 @@
-1 User
+1 User.
 
 1.1 POST
 
 Method_____________POST
 Request____________/user?<params>
-Parameters_________userName, lastName, bithDate, biographi, email, login, password
+Parameters_________name, last_name, birthdate, email, phone, password
 Specification______Register a new user
-Example____________http://example.com/user?username=Fabio&lastname=Moreira&birthdate=25101993&biographi=estudante&email=fabio@fabio&login=Fabioc&password=******              
+Example____________http://example.com/user?name=Fabio&last_name=Moreira&birthdate=25101993&email=fabio@fabio&phone=555555555&login=Fabioc&password=******              
 			REQUEST 1.1.1 New User Register
 		
 1.2 GET
@@ -16,7 +16,7 @@ Request____________/user?<params>
 Parameters_________login, password
 Specification______return User data 
 Example____________http://example.com/user?login=Fabioc&password=******
-			REQUEST 1.2.1 Get personal informations
+			REQUEST 1.2.1 Get profile
 
 
 2 Search User
@@ -24,33 +24,33 @@ Example____________http://example.com/user?login=Fabioc&password=******
 2.1 GET
 
 Method_____________GET
-Request____________/searchUser?<params>
-Parameters_________userName or lastName
-Specification______Return a json an array of all users by name or lastName
-Example____________http://example.com/searchuser?username:Fabio
+Request____________/search_user?<params>
+Parameters_________name, last_name, email
+Specification______Return a json an array of all users by name, last name or e-mail
+Example____________http://example.com/search_user?name=Fabio&last_name=Moreira
 			REQUEST 2.1.1 Get specified users
 
 
 3 Friends
 
+3.1 POST
 
-3.1.1 GET
+Method____________POST
+Request____________/friends?<params>
+Parameters_________name, friend_name
+Specification______add a new friends 
+Example____________http://example.com/friends?name=Fabio&name_friend=Fabio
+			REQUEST 3.1.1 Post new friend
+
+3.2 GET
 
 Method____________GET
-Request____________/friends
-Parameters_________none
+Request____________/friends?<params>
+Parameters_________friend_name
 Specification______Return a json an array of all friends 
-Example____________http://example.com/friends
-			REQUEST 3.1.1.1 Get all friends
+Example____________http://example.com/friends?friend_name=Nayara
+			REQUEST 3.2.1 Get all friends
 
-3.1.2 GET
-
-Method____________GET
-Request___________/friends/<params>/
-Parameters________friendName
-Specification_____Return a json user profile selected
-Example___________http://example.com/friends?friendName=Fabio
-			REQUEST 3.1.2.1 Get profile friend by name
 
 4 Publications
 
@@ -58,28 +58,28 @@ Example___________http://example.com/friends?friendName=Fabio
 
 Method____________POST
 Request___________/publications?<params>/
-Parameters________userName
-Specification_____post a new publication in profile personal
-Example___________http://example.com/publications?userName=Fabio
+Parameters________name, publication, date_hour
+Specification_____post a new publication
+Example___________http://example.com/publications?name=Fabio&id_publication=001
 			REQUEST 4.1.1 Post new publication
 
 4.2 GET
 
 Method____________GET
 Request___________/publications?<params>
-Parameters________none
+Parameters________name,  id_publication, date_hour
 Specification_____Return all publications on my profile
-Example___________http://example.com/publications
+Example___________http://example.com/publications?name=Fabio&id_publication=002&date_hour=19042016-1313
 			REQUEST 4.2.1 Get all publications on my profile
 		
-4.3 GET
+4.2.1 GET
 
 Method____________GET
 Request___________/friends/publications?<params>
-Parameters________friendName, IDpublication
+Parameters________friend_name, id_publication, date_hour
 Specification_____Return to all publications of the selected profile
-Example___________http://example.com/friends/publications?friendName=Fabio&IDpublication=001
-			REQUEST 4.3.1 Get all publications by UserName and IDpublications
+Example___________http://example.com/friends/publications?friend_name=Fabio&id_publication=001&date_hour=19042016-1313
+			REQUEST 4.2.1.1 Get all publications by UserName and IDpublications
 
 5 Message
 
@@ -87,18 +87,18 @@ Example___________http://example.com/friends/publications?friendName=Fabio&IDpub
 
 Method____________POST
 Request___________/message?<params>
-Parameters________userName, friendName
+Parameters________name, friend_name, message
 Specification_____Send Message To friend selected.
-Example___________http://example.com/message?userName=Fabio&friendName=Nayara
+Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_message=003
 			REQUEST 5.1.1 Post message friend specified
 
 5.2 GET
 
 Method____________GET
 Request___________/message/
-Parameters________userName, friendName, messageId
+Parameters________name, friend_name, id_message
 Specification_____Return a json with an array of all messages 
-Example___________http://example.com/message?userName=Fabio&friendName=Nayara&messageId=1000
+Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_message=005
 		REQUEST 5.2.1 Get all messages
 
 6 Chart Exercises
@@ -106,28 +106,28 @@ Example___________http://example.com/message?userName=Fabio&friendName=Nayara&me
 6.1 POST
 
 Method____________POST
-Request___________/ChartExercises?<params>
-Parameters________userName, nameFriend, expiredate, exercises.
+Request___________/ChartExercises?params>
+Parameters________name, expire_date, chart_exercises
 Specification_____creates a new set of exercises. send a friend a new series of exercises
-Example___________http://example.com/chartexercises?userName=Fabio&expiredate=30&exercises=supino
+Example___________http://example.com/chartexercises?name=Fabio&friend_name=Nayara&expire_date=30&id_chart_exercises=001
 		REQUEST 6.1.1 Post new chart exercises
 
 6.2 GET
 
 Method_____________GET
 Request____________/ChartExercises/
-Parameters_________userName, chartexercisesID, exercises
+Parameters_________ name, id_chart_exercises, expire_date
 Specification______display current exercises series. historical display of exercises
-Example____________http://example.com/chartexercise?&userName=Fabio&chartercisesid=001&expiratedate=25072016&exercises=supino
+Example____________http://example.com/tableexercise?&name=Fabio&id_chart_exercises=001&expiratedate=25072016
 		REQUEST 6.2.1 Get all chart of exercises (activated and deactivated)
 		
 6.2.1 GET
 
 Method_____________GET
 Request____________/friends/ChartExercises/
-Parameters_________userName, IDfriend, chartexercisesID, exercises
+Parameters_________ name, friend_name, id_chart_exercises
 Specification______display current exercises series. 
-Example____________http://example.com/chartexercise?&userName=Fabio&IDfriend=004&chartercisesid=001&exercises=supino
+Example____________http://example.com/tableexercise?&name=Fabio&friend_name=Nayara&id_chart_exercises=001
 		REQUEST 6.2.1.1 Get chart exercises of friend
 
 
@@ -136,7 +136,9 @@ Example____________http://example.com/chartexercise?&userName=Fabio&IDfriend=004
 
 Method____________PUT
 Request___________/ChartExercises/
-Parameters________userName, chartexercisesID
+Parameters________name, chart_exercises, expire_date
 Specification_____update current exercises chart.
-Example___________http://example.com/chartexercises?userName=Fabio&tableexercisesID=001
+Example___________http://example.com/chartexercises?name=Fabio&id_chart_exercises=001&expire_date=25072016
 		REQUEST 6.3.1 Put chart exercises
+
+
