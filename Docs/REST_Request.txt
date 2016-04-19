@@ -1,4 +1,4 @@
-1 User.
+1 User
 
 1.1 POST
 
@@ -81,6 +81,16 @@ Specification_____Return to all publications of the selected profile
 Example___________http://example.com/friends/publications?friend_name=Fabio&id_publication=001&date_hour=19042016-1313
 			REQUEST 4.2.1.1 Get all publications by UserName and IDpublications
 
+4.2.1 DELETE
+
+Method____________DELETE
+Request___________/publications?<params>
+Parameters________name, id_publication, date_hour
+Specification_____Delete publications of profile
+Example___________http://example.com/publications?name=Fabio&id_publication=001&date_hour=19042016-1313
+			REQUEST 4.2.1.1 Delete publication
+
+
 5 Message
 
 5.1 POST
@@ -95,11 +105,20 @@ Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_me
 5.2 GET
 
 Method____________GET
-Request___________/message/
+Request___________/message?<params>
 Parameters________name, friend_name, id_message
 Specification_____Return a json with an array of all messages 
 Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_message=005
-		REQUEST 5.2.1 Get all messages
+		REQUEST 5.2.1 Get messages
+
+5.2 DELETE
+
+Method____________DELETE
+Request___________/message?<params>
+Parameters________name, friend_name, id_message
+Specification_____Return a json with an array of all messages 
+Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_message=005
+		REQUEST 5.2.1 Delete messages
 
 6 Chart Exercises
 
@@ -124,21 +143,26 @@ Example____________http://example.com/tableexercise?&name=Fabio&id_chart_exercis
 6.2.1 GET
 
 Method_____________GET
-Request____________/friends/ChartExercises/
+Request____________/friends/ChartExercises?<params>
 Parameters_________ name, friend_name, id_chart_exercises
 Specification______display current exercises series. 
 Example____________http://example.com/tableexercise?&name=Fabio&friend_name=Nayara&id_chart_exercises=001
 		REQUEST 6.2.1.1 Get chart exercises of friend
 
-
-
 6.3 PUT
 
 Method____________PUT
-Request___________/ChartExercises/
-Parameters________name, chart_exercises, expire_date
+Request___________/ChartExercises?<params>
+Parameters________name, id_chart_exercises, expire_date
 Specification_____update current exercises chart.
 Example___________http://example.com/chartexercises?name=Fabio&id_chart_exercises=001&expire_date=25072016
 		REQUEST 6.3.1 Put chart exercises
 
+6.4 DELETE
 
+Method____________DELETE
+Request___________/ChartExercises?<params>
+Parameters________name, id_chart_exercises, expire_date
+Specification_____Delete exercises chart.
+Example___________http://example.com/chartexercises?name=Fabio&id_chart_exercises=001&expire_date=25072016
+		REQUEST 6.4.1 Delete chart exercises
