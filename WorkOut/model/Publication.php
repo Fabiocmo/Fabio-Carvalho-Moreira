@@ -1,22 +1,16 @@
 <?php
+
 class Publication
-{    
-    
-    private $userName;
-    
-    public function __construct($userName)
-    {
-        $this->setUserName($userName);
-        
-    }
-    public function setUserName($userName)
-    {
-        $this->name = $userName;
-    }
-    
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-    
+{
+	private $name;
+	private $id_publication;
+	private $date_hour;
+	
+	public function __construct($name, $id_publication, date_hour)
+	{
+		$this->name = $name;
+		$this->id_publication = $id_publication;
+		$this->date_hour = $date_hour;
+	}
+
 }

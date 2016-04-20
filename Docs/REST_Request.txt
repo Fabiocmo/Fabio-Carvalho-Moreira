@@ -1,4 +1,4 @@
-1 User
+1 User.
 
 1.1 POST
 
@@ -166,3 +166,5 @@ Parameters________name, id_chart_exercises, expire_date
 Specification_____Delete exercises chart.
 Example___________http://example.com/chartexercises?name=Fabio&id_chart_exercises=001&expire_date=25072016
 		REQUEST 6.4.1 Delete chart exercises
+
+

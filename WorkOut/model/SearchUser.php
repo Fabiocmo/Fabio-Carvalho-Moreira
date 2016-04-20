@@ -1,32 +1,16 @@
 <?php
-class searchUser
-{    
-    
-    private $userName;
-    private $lastName;
-   
-    public function __construct($userName, $lastName)
-    {
-        $this->setUserName($userName);
-        $this->setLastName($lastName);
-        
-    }
-    public function setUserName($userName)
-    {
-        $this->userName = $userName;
-    }
-    public function setLastName($LastName)
-    {
-        $this->lastName = $lastName;
-    }
-    
 
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
+class SearchUser
+{
+	private $name;
+	private $last_name;
+	private $email;
+	
+	public function __construct($name, $last_name, $email)
+	{
+		$this->name = $name;
+		$this->last_name = $last_name;
+		$this->email = $email;
+	}
+
 }

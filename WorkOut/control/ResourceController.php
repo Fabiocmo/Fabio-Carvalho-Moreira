@@ -8,13 +8,16 @@ class ResourceController
 
 	private $controlMap = 
 	[
-		"cebola" => "CebolaController",
 		"user" => "UserController",
-		"product" => "ProductController",
+		"friend" => "FiendController",
+		"searchuser" => "SearchUserController",
+		"publication" => "PublicationController",
+		"chartexercise" => "ChartExerciseController",
+
 	];
 
 	public function createResource($request)
 	{
-		return new $this->controlMap[$request->get_resource()]());
+		return (new $this->controlMap[$request->get_resource()]())->register($request);
 	}
 }

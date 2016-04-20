@@ -1,55 +1,17 @@
 <?php
+
 class ChartExercise
-{    
-    
-    private $userName;
-    private $nameFriend;
-    private $expireDate; 
-    private $exercises;
-    
-    public function __construct($userName, $nameFriend, $expireDate, $exercises)
-    {
-        $this->setUserName($userName);
-        $this->setNameFriend($nameFriend);
-        $this->setExpireDate($expireDate);
-        $this->setExercises($exercises);
-        
-    }
-    public function setUSerName($userName)
-    {
-        $this->userName = $userName;
-    }
-    public function setNameFriend($nameFriend)
-    {
-        $this->nameFriend = $nameFriend;
-    }
-    public function setexpireDate($expireDate)
-    {
-        $this->expireDate = $expireDate;
-    }
-    public function setExercises($exercises)
-    {
-        $this->exercises = $exercises;
-    }
-     
+{
+	private $name;
+	private $expire_date;
+	private $id_chart_exercise;
+	
+	public function __construct($name, $expire_date,
+	$id_chart_exercise)
+	{
+		$this->name = $name;
+		$this->expire_date = $expire_date;
+		$this->id_chart_exercise = $id_chart_exercise;
+	}
 
-
-
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-    public function getNameFriend()
-    {
-        return $this->nameFriend;
-    }
-    public function getExpireDate()
-    {
-        return $this->expireDate;
-    }
-    public function getExercises()
-    {
-        return $this->exercises;
-    }
-    
 }

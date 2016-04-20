@@ -49,6 +49,16 @@ class Request
 		return $this->resource;
 	}
 
+	public function get_params()
+	{
+		return $this->params;
+	}
+
+	public function get_method()
+	{
+		return $this->method;
+	}
+
 
 
 

@@ -23,6 +23,30 @@ class ControlManager
 			    $_SERVER["REQUEST_URI"],
 			    $_SERVER["SERVER_ADDR"]);
 
-		return $this->resourceController->createResource($request);
+		return $this->route_method($request);
 	}	
+
+	public function route_method($request)
+	{
+		var_dump($request->get_method());
+		switch($request->get_method())
+		{
+			case "GET":
+			           break;
+			
+			case "POST": 
+			   return $this->resourceController->createResource($request);
+			    break;
+
+			case "PUT":
+			 			break;
+
+			case "DELETE": 
+						break;
+
+			default:
+
+		           
+		}	
+	}
 }
