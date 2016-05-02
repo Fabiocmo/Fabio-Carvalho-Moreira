@@ -22,4 +22,39 @@ class User
 		$this->password = $password;
 	}
 
+	public function getName()
+	{
+		return $this->name;
+	}
+
+	public function getLastname()
+	{
+		return $this->last_name;
+	}
+
+	public function getEmail()
+	{
+		return $this->email;
+	}
+
+	public function getBirthdate()
+	{
+		return $this->birthdate;
+	}
+
+	public function getPhone()
+	{
+		return $this->phone;
+	}
+	public function getLogin()
+	{
+		return $this->login;
+	}
+	public function getPassword()
+	{
+		return $this->password;
+	}
+
+
+
 }

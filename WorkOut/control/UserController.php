@@ -2,6 +2,7 @@
 
 include_once "model/Request.php";
 include_once "model/User.php";
+include_once "database/DatabaseConnector.php";
 
 class UserController
 {
@@ -14,8 +15,27 @@ class UserController
 				         $params["birthdate"],
 			        	 $params["phone"],
 				         $params["login"],
-				         $params["password"]);
+				         $params["pass"]);
 
-		return var_dump($user);
+		$db = new DatabaseConnector("localhost", "workout", "mysql", "", "root", "");
+
+		$conn = $db->getConnection();
+		
+		
+	    return $conn->query($this->generateInsertQuery($user));
+	}
+
+	private function generateInsertQuery($user)
+	{
+		$query =  "INSERT INTO user (name, last_name, email, birthdate, phone, login, pass) VALUES ('".$user->getName()."','".
+					$user->getLastName()."','".
+					$user->getEmail()."','".
+					$user->getBirthdate()."','".
+					$user->getPhone()."','". 
+					$user->getLogin()."','". 
+					$user->getPassword()."')";
+				
+
+		return $query;						
 	}
 }

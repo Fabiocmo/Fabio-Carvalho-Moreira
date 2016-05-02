@@ -2,6 +2,9 @@
 
 include_once "model/Request.php";
 include_once "control/UserController.php";
+include_once "control/ChartExerciseController.php";
+include_once "control/PublicationController.php";
+include_once "control/MessageController.php";
 
 class ResourceController
 {
@@ -9,10 +12,10 @@ class ResourceController
 	private $controlMap = 
 	[
 		"user" => "UserController",
-		"friend" => "FiendController",
-		"searchuser" => "SearchUserController",
+		"friend" => "FiendController",		
 		"publication" => "PublicationController",
 		"chartexercise" => "ChartExerciseController",
+		"message" => "MessageController",
 
 	];
 
