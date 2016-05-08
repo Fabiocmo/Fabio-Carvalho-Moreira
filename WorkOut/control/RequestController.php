@@ -34,10 +34,4 @@ class RequestController
 		}
 		return $params_map;	
 	}
-
-
-
-
-
-
 }

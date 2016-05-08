@@ -1,0 +1,23 @@
+insert new user
+http://localhost/WorkOut/user/?name=Fabio5&last_name=Carvalho&email=teste@email&birthdate=1993-10-25&phone=9999999999&login=testlogin&pass=jklsjdf
+
+select user
+http://localhost/WorkOut/user/?name=Fabio
+----------------------------------------------------------------------------------------------------------------------------
+insert message
+http://localhost/WorkOut/message/?id_user_send=2&id_user_receive=1&message=Mensagem Teste
+
+select message
+http://localhost/WorkOut/message/?id_user_send=1
+----------------------------------------------------------------------------------------------------------------------------
+insert new chart exercise
+http://localhost/WorkOut/chartexercise/?name=Fabio&expire_date=2016-07-02&chart_exercise=trapezio
+
+select chart exercise
+http://localhost/WorkOut/chartexercise/?name=Fabio
+---------------------------------------------------------------------------------------------------------------------------------
+insert publication
+http://localhost/WorkOut/publication/?id_user=2&datee=2016-05-07&hour=10:22:22&publication=primeira
+
+select publication
+http://localhost/WorkOut/publication/?id_user=1

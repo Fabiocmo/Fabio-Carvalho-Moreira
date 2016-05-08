@@ -35,7 +35,5 @@ class DatabaseConnector
 		 }
 
 		return $connection;
-	} 
-
-	
+	}	
 }

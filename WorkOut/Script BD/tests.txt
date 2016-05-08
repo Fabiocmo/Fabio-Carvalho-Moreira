@@ -1,2 +1,0 @@
-insert new user
-http://localhost/WorkOut/user/?name=Fabio5&last_name=Carvalho&email=teste@email&birthdate=1993-10-25&phone=9999999999&login=testlogin&pass=jklsjdf

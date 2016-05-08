@@ -23,4 +23,9 @@ class ResourceController
 	{
 		return (new $this->controlMap[$request->get_resource()]())->register($request);
 	}
+
+	public function searchResource($request)
+	{
+		return (new $this->controlMap[$request->get_resource()]())->search($request);
+	}
 }
