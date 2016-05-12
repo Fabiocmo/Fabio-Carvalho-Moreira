@@ -12,7 +12,7 @@ class ResourceController
 	private $controlMap = 
 	[
 		"user" => "UserController",
-		"friend" => "FiendController",		
+		"friend" => "FriendController",		
 		"publication" => "PublicationController",
 		"chartexercise" => "ChartExerciseController",
 		"message" => "MessageController",
@@ -21,7 +21,8 @@ class ResourceController
 
 	public function createResource($request)
 	{
-		return (new $this->controlMap[$request->get_resource()]())->register($request);
+		
+		//return (new $this->controlMap[$request->get_resource()]())->register($request);
 	}
 
 	public function searchResource($request)

@@ -2,13 +2,22 @@
 
 class Friend
 {
-	private $name;
-	private $friend_name;
+	private $id_user;
+	private $id_user_friend;
 	
-	public function __construct($name, $friend_name)
+	public function __construct($id_user, $id_user_friend)
 	{
-		$this->name = $name;
-		$this->friend_name = $friend_name;
+		$this->id_user = $id_user;
+		$this->id_user_friend = $id_user_friend;
+	}
+
+	public function getIdUser()
+	{
+		return $this->id_user;
+	}
+	public function getIdUserFriend()
+	{
+		return $this->id_user_friend;
 	}
 
 }

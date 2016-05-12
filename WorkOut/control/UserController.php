@@ -17,6 +17,10 @@ class UserController
 				         $params["login"],
 				         $params["pass"]);
 
+		if ($this->isValid($user)==1){
+			
+		
+
 		$db = new DatabaseConnector("localhost", "workout", "mysql", "", "root", "");
 
 		$conn = $db->getConnection();
@@ -24,9 +28,13 @@ class UserController
 		
 	    return $conn->query($this->generateInsertQuery($user));
 	}
+	else return "esta faltando algum dado";
+		return var_dump($user);
+    }
 
 	private function generateInsertQuery($user)
 	{
+		
 		$query =  "INSERT INTO user (name, last_name, email, birthdate, phone, login, pass) VALUES ('".$user->getName()."','".
 					$user->getLastName()."','".
 					$user->getEmail()."','".
@@ -65,5 +73,34 @@ class UserController
 		}
 
 		return substr($criteria, 0, -4);	
+	}
+
+	private function isValid($user)
+	{
+		
+		if($user->getName()==null){
+			return 0;
+		}
+		if($user->getLastName()==null){
+			return 0;
+		}
+		if($user->getEmail()==null){
+			return 0;
+		}
+		if($user->getBirthdate()==null){
+			return 0;
+		}
+		if($user->getPhone()==null){
+			return 0;
+		}
+		if($user->getLogin()==null){
+			return 0;
+		}
+		
+		if($user->getPassword()==null){
+			return 0;
+		}
+		else
+			return 1;
 	}
 }
