@@ -4,167 +4,140 @@
 
 Method_____________POST
 Request____________/user?<params>
-Parameters_________name, last_name, birthdate, email, phone, password
+Parameters_________name, last_name, birthdate, email, phone, login, password
 Specification______Register a new user
-Example____________http://example.com/user?name=Fabio&last_name=Moreira&birthdate=25101993&email=fabio@fabio&phone=555555555&login=Fabioc&password=******              
+Example____________http://example.com/post/user/?name=Fabio&last_name=Moreira&birthdate=1993-10-25&email=fabio@fabio&phone=555555555&login=Fabioc&password=123              
 			REQUEST 1.1.1 New User Register
 		
 1.2 GET
 
 Method_____________GET
 Request____________/user?<params>
-Parameters_________login, password
+Parameters_________name, last_name, email, birth_date, phone
 Specification______return User data 
-Example____________http://example.com/user?login=Fabioc&password=******
-			REQUEST 1.2.1 Get profile
+Example____________http://example.com/get/user/?name=Fabio&last_name=Moreira&birthdate1993-10-25&email=fabio@fabio&phone=5555555555
+			REQUEST 1.2.1 Get user data
 
 
-2 Search User
+2 Friends
 
-2.1 GET
+2.1 POST
 
-Method_____________GET
-Request____________/search_user?<params>
-Parameters_________name, last_name, email
-Specification______Return a json an array of all users by name, last name or e-mail
-Example____________http://example.com/search_user?name=Fabio&last_name=Moreira
-			REQUEST 2.1.1 Get specified users
+Method____________POST
+Request____________/friends?<params>
+Parameters_________id_user, id_user_friend
+Specification______add a new friends 
+Example____________http://example.com/post/friends/?id_user=1&id_user_friend=2
+			REQUEST 2.1.1 Post new friend
+
+2.2 GET
+
+Method____________GET
+Request____________/friends?<params>
+Parameters_________id_friend
+Specification______Return a json an array of all friends 
+Example____________http://example.com/get/friends/?id_friend=2
+			REQUEST 2.2.1 Get friend
 
 
-3 Friends
+3 Publications
 
 3.1 POST
 
 Method____________POST
-Request____________/friends?<params>
-Parameters_________name, friend_name
-Specification______add a new friends 
-Example____________http://example.com/friends?name=Fabio&name_friend=Fabio
-			REQUEST 3.1.1 Post new friend
+Request___________/publication?<params>/
+Parameters________id_user, datee, hour, publication
+Specification_____post a new publication
+Example___________http://example.com/publication/?id_user=1&datee=2016-05-10&hour=01:05:00&publication=win!
+			REQUEST 3.1.1 Post new publication
 
 3.2 GET
 
 Method____________GET
-Request____________/friends?<params>
-Parameters_________friend_name
-Specification______Return a json an array of all friends 
-Example____________http://example.com/friends?friend_name=Nayara
-			REQUEST 3.2.1 Get all friends
-
-
-4 Publications
-
-4.1 POST
-
-Method____________POST
-Request___________/publications?<params>/
-Parameters________name, publication, date_hour
-Specification_____post a new publication
-Example___________http://example.com/publications?name=Fabio&id_publication=001
-			REQUEST 4.1.1 Post new publication
-
-4.2 GET
-
-Method____________GET
 Request___________/publications?<params>
-Parameters________name,  id_publication, date_hour
+Parameters________id_user
 Specification_____Return all publications on my profile
-Example___________http://example.com/publications?name=Fabio&id_publication=002&date_hour=19042016-1313
-			REQUEST 4.2.1 Get all publications on my profile
+Example___________http://example.com/publication/?id_user=1
+			REQUEST 3.2.1 Get publication by id user
 		
-4.2.1 GET
 
-Method____________GET
-Request___________/friends/publications?<params>
-Parameters________friend_name, id_publication, date_hour
-Specification_____Return to all publications of the selected profile
-Example___________http://example.com/friends/publications?friend_name=Fabio&id_publication=001&date_hour=19042016-1313
-			REQUEST 4.2.1.1 Get all publications by UserName and IDpublications
-
-4.2.1 DELETE
+3.2 DELETE***************
 
 Method____________DELETE
 Request___________/publications?<params>
 Parameters________name, id_publication, date_hour
 Specification_____Delete publications of profile
-Example___________http://example.com/publications?name=Fabio&id_publication=001&date_hour=19042016-1313
-			REQUEST 4.2.1.1 Delete publication
+Example___________http://example.com/publications/?name=Fabio&id_publication=001&date_hour=19042016-1313
+			REQUEST 3.2.1 Delete publication
 
 
-5 Message
+4 Message
+
+4.1 POST
+
+Method____________POST
+Request___________/message?<params>
+Parameters________id_user_send, id_user_receive, message
+Specification_____Post Message
+Example___________http://localhost/WorkOut/message/?id_user_send=1&id_user_receive=1&message=WIN!
+			REQUEST 4.1.1 Post message
+
+4.2 GET
+
+Method____________GET
+Request___________/message?<params>
+Parameters________id_user_send, id_user_receive, message
+Specification_____Return a json with an array of all messages 
+Example___________http://localhost/WorkOut/message/?id_user_send=1
+		REQUEST 4.2.1 Get messages
+
+4.2 DELETE
+
+Method____________DELETE******nao implementado***********
+Request___________/message?<params>
+Parameters________name, friend_name, id_message
+Specification_____Return a json with an array of all messages 
+Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_message=005
+		REQUEST 4.2.1 Delete messages
+
+5 Chart Exercises
 
 5.1 POST
 
 Method____________POST
-Request___________/message?<params>
-Parameters________name, friend_name, message
-Specification_____Send Message To friend selected.
-Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_message=003
-			REQUEST 5.1.1 Post message friend specified
+Request___________/ChartExercises?<params>
+Parameters________name, expire_date, chart_exercise
+Specification_____creates a new set of exercises. send a friend a new series of exercises
+Example___________http://localhost/WorkOut/chartexercise/?name=Fabio&expire_date=2016-07-02&chart_exercise=trapezio
+		REQUEST 5.1.1 Post new chart exercises
 
 5.2 GET
 
-Method____________GET
-Request___________/message?<params>
-Parameters________name, friend_name, id_message
-Specification_____Return a json with an array of all messages 
-Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_message=005
-		REQUEST 5.2.1 Get messages
-
-5.2 DELETE
-
-Method____________DELETE
-Request___________/message?<params>
-Parameters________name, friend_name, id_message
-Specification_____Return a json with an array of all messages 
-Example___________http://example.com/message?name=Fabio&friend_name=Nayara&id_message=005
-		REQUEST 5.2.1 Delete messages
-
-6 Chart Exercises
-
-6.1 POST
-
-Method____________POST
-Request___________/ChartExercises?params>
-Parameters________name, expire_date, chart_exercises
-Specification_____creates a new set of exercises. send a friend a new series of exercises
-Example___________http://example.com/chartexercises?name=Fabio&friend_name=Nayara&expire_date=30&id_chart_exercises=001
-		REQUEST 6.1.1 Post new chart exercises
-
-6.2 GET
-
 Method_____________GET
-Request____________/ChartExercises/
-Parameters_________ name, id_chart_exercises, expire_date
+Request____________/ChartExercises?<params>
+Parameters_________ name, expire_date, chart_exercise
 Specification______display current exercises series. historical display of exercises
-Example____________http://example.com/tableexercise?&name=Fabio&id_chart_exercises=001&expiratedate=25072016
-		REQUEST 6.2.1 Get all chart of exercises (activated and deactivated)
+Example____________http://localhost/WorkOut/chartexercise/?name=Fabio
+		REQUEST 5.2.1 Get all chart of exercises (activated and deactivated)
 		
-6.2.1 GET
 
-Method_____________GET
-Request____________/friends/ChartExercises?<params>
-Parameters_________ name, friend_name, id_chart_exercises
-Specification______display current exercises series. 
-Example____________http://example.com/tableexercise?&name=Fabio&friend_name=Nayara&id_chart_exercises=001
-		REQUEST 6.2.1.1 Get chart exercises of friend
 
-6.3 PUT
+5.3 PUT
 
-Method____________PUT
+Method____________PUT*****************
 Request___________/ChartExercises?<params>
 Parameters________name, id_chart_exercises, expire_date
 Specification_____update current exercises chart.
 Example___________http://example.com/chartexercises?name=Fabio&id_chart_exercises=001&expire_date=25072016
-		REQUEST 6.3.1 Put chart exercises
+		REQUEST 5.3.1 Put chart exercises
 
-6.4 DELETE
+5.4 DELETE
 
-Method____________DELETE
+Method____________DELETE*********************
 Request___________/ChartExercises?<params>
 Parameters________name, id_chart_exercises, expire_date
 Specification_____Delete exercises chart.
 Example___________http://example.com/chartexercises?name=Fabio&id_chart_exercises=001&expire_date=25072016
-		REQUEST 6.4.1 Delete chart exercises
+		REQUEST 5.4.1 Delete chart exercises
 
 

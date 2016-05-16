@@ -6,9 +6,13 @@ include_once "database/DatabaseConnector.php";
 
 class ChartExerciseController
 {
+	private $requiredParameters = array('email', 'expire_date', 'chart_exercise');
+
 	public function register($request)
 	{
 		$params = $request->get_params();
+		if ($this->isValid($params))
+		{
 		$chartexercise = new ChartExercise ($params["name"],				         
 				                            $params["expire_date"],
 				                            $params["chart_exercise"]);				         
@@ -19,6 +23,10 @@ class ChartExerciseController
 		
 		
 	    return $conn->query($this->generateInsertQuery($chartexercise));
+
+		} else{
+		    echo "Erro 400: Bad Request";
+		}
 	}
 
 	private function generateInsertQuery($chartexercise)
@@ -57,4 +65,16 @@ class ChartExerciseController
 
 		return substr($criteria, 0, -4);	
 	}
+	
+    private function isValid($parameters)
+    {
+    	foreach ($params as $key => $value) 
+    	{
+    		if($value==null)
+    		{
+    			return false;
+    		}
+    	}
+    	return true;        
+    }
 }

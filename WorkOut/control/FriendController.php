@@ -55,4 +55,16 @@ class FriendController
 
 		return substr($criteria, 0, -4);	
 	}
+
+    private function isValid($params)
+    {
+    	foreach ($params as $key => $value) 
+    	{
+    		if($value==null)
+    		{
+    			return false;
+    		}
+    	}
+    	return true;        
+    }
 }

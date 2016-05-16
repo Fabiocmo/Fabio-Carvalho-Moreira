@@ -7,19 +7,17 @@ class User
 	private $email;
 	private $birthdate;
 	private $phone;
-	private $login;
-	private $password;
+	private $pass;
 
 	public function __construct($name, $last_name,
-	$email, $birthdate, $phone, $login, $password)
+	$email, $birthdate, $phone, $pass)
 	{
 		$this->name = $name;
 		$this->last_name = $last_name;
 		$this->email = $email;
 		$this->birthdate = $birthdate;
 		$this->phone = $phone;
-		$this->login = $login;
-		$this->password = $password;
+		$this->pass = $pass;
 	}
 
 	public function getName()
@@ -46,13 +44,10 @@ class User
 	{
 		return $this->phone;
 	}
-	public function getLogin()
-	{
-		return $this->login;
-	}
+	
 	public function getPassword()
 	{
-		return $this->password;
+		return $this->pass;
 	}
 
 }

@@ -6,44 +6,43 @@ include_once "database/DatabaseConnector.php";
 
 class UserController
 {
+	private $requiredParameters = ['name', 'last_name', 'email', 'birthdate', 'phone', 'pass'];
+
 	public function register($request)
 	{
 		$params = $request->get_params();
+		if ($this->isValid($params))
+		{
 		$user = new User($params["name"],
 				         $params["last_name"],
 				         $params["email"],
 				         $params["birthdate"],
 			        	 $params["phone"],
-				         $params["login"],
-				         $params["pass"]);
+				         $params["pass"]);		
 
-		if ($this->isValid($user)==1){
-			
-		
 
 		$db = new DatabaseConnector("localhost", "workout", "mysql", "", "root", "");
-
-		$conn = $db->getConnection();
-		
-		
+		$conn = $db->getConnection();		
 	    return $conn->query($this->generateInsertQuery($user));
+	
+		} else
+		    {
+		    echo "Erro 400: Bad Request ";
+		    }
+		
 	}
-	else return "esta faltando algum dado";
-		return var_dump($user);
-    }
 
 	private function generateInsertQuery($user)
 	{
 		
-		$query =  "INSERT INTO user (name, last_name, email, birthdate, phone, login, pass) VALUES ('".$user->getName()."','".
+		$query =  "INSERT INTO user (name, last_name, email, birthdate, phone, pass) VALUES ('".$user->getName()."','".
 					$user->getLastName()."','".
 					$user->getEmail()."','".
 					$user->getBirthdate()."','".
 					$user->getPhone()."','". 
-					$user->getLogin()."','". 
 					$user->getPassword()."')";
 				
-
+		//print_r(mysql_insert_id())
 		return $query;						
 	}
 
@@ -75,32 +74,17 @@ class UserController
 		return substr($criteria, 0, -4);	
 	}
 
-	private function isValid($user)
-	{
-		
-		if($user->getName()==null){
-			return 0;
-		}
-		if($user->getLastName()==null){
-			return 0;
-		}
-		if($user->getEmail()==null){
-			return 0;
-		}
-		if($user->getBirthdate()==null){
-			return 0;
-		}
-		if($user->getPhone()==null){
-			return 0;
-		}
-		if($user->getLogin()==null){
-			return 0;
-		}
-		
-		if($user->getPassword()==null){
-			return 0;
-		}
-		else
-			return 1;
-	}
+	
+    private function isValid($params)
+    {
+    	foreach ($params as $key => $value) 
+    	{
+    		if($value==null)
+    		{
+    			return false;
+    		}
+    	}
+    	return true;        
+    }
+	
 }

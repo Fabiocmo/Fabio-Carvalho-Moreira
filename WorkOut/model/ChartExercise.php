@@ -2,20 +2,20 @@
 
 class ChartExercise
 {
-	private $name;
+	private $email;
 	private $expire_date;
 	private $chart_exercise;
 		
-	public function __construct($name, $expire_date, $chart_exercise)
+	public function __construct($email, $expire_date, $chart_exercise)
 	{
-		$this->name = $name;
+		$this->email = $email;
 		$this->expire_date = $expire_date;
 		$this->chart_exercise = $chart_exercise;
 		
 	}
-	public function getName()
+	public function getEmail()
 	{
-		return $this->name;
+		return $this->email;
 	}
 	public function getExpireDate()
 	{

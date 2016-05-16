@@ -6,6 +6,8 @@ include_once "database/DatabaseConnector.php";
 
 class PublicationController
 {
+	private $requiredParameters = array('id_user', 'datee', 'hour', 'publication');
+
 	public function register($request)
 	{
 		$params = $request->get_params();
@@ -59,4 +61,16 @@ class PublicationController
 
 		return substr($criteria, 0, -4);	
 	}
+
+    private function isValid($params)
+    {
+    	foreach ($params as $key => $value) 
+    	{
+    		if($value==null)
+    		{
+    			return false;
+    		}
+    	}
+    	return true;        
+    }
 }	
