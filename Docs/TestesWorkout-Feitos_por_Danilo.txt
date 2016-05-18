@@ -1,0 +1,95 @@
+TESTE POR DANILO BAPTISTA.
+
+
+Resquisições do fabio - Projeto WorkOut:
+
+1-USER
+
+Requisição: INSERT http://localhost/WorkOut/user/?name=danilo&last_name=Carvalho&email=teste@email&birthdate=1993-10-25&phone=9999999999&pass=jklsjdf
+Status: OK
+Descrição: insere no banco.
+
+Requisição: INSERT http://localhost/WorkOut/user/?name=&email=teste@email&birthdate=1993-10-25&phone=9999999999&pass=jklsjdf
+Status: OK
+Descrição: Ele valida mesmo com erros nos parametros.
+
+Requisição: INSERT http://localhost/WorkOut/user/?last_name=Carvalho&email=teste@email&birthdate=1993-10-25&phone=9999999999&pass=jklsjdf
+Status: erro
+Descrição: Ele não validou, apareceu como erro de offset pois eu tirei o address. Faltando chave e valor ele da erro.
+
+Requisição:GET http://localhost/WorkOut/user/?name=Fabio5
+Status: OK
+Descrição: Traz a informação especifica, fabio5.
+
+Requisição:GET http://localhost/WorkOut/user/?name=Fabio5&last_name=Carvalho
+Status: ok com porém
+Descrição: Precisa ser implementado para que ele mostre o dado especificamente e nao todos.
+
+2-publication
+
+Requisição: INSERT http://localhost/WorkOut/publication/?id_user=2&datee=2016-05-07&hour=10:22:22&publication=primeira
+Status: OK
+Descrição: INSERE no banco.
+
+Requisição: INSERT http://localhost/WorkOut/publication/?id_user=&datee=2016-05-07&hour=10:22:22&publication=primeira
+Status: ERRO
+Descrição: Insere vazio.
+
+Requisições: INSERT http://localhost/WorkOut/publication/?id_user=2&hour=10:22:22&publication=primeira
+Status:ERRO
+Descrição: Insere vazio.
+
+Requisições GET: http://localhost/WorkOut/publication/?id_user=1
+Status:OK
+Descrição: ele busca porém acho que não se deve buscar pelo ID.
+
+Requisições GET: http://localhost/WorkOut/publication/?id_user=8&id_publication=52
+Status:OK
+Descrição: Está buscando.
+
+3- Chartexercise
+
+Requisição: INSERT http://localhost/WorkOut/chartexercise/?name=Danilo&expire_date=2016-07-02&chart_exercise=trapezio
+Status: ERRO
+Descrição:erro na linha 71
+
+Requisição: GET http://localhost/WorkOut/chartexercise/?name=Fabio&chart_exercise=trapezio
+Status: OK
+Descrição: Busca.
+
+
+Requisição: GET http://localhost/WorkOut/chartexercise/?name=
+Status: ERRO
+Descrição: Ele busca os dados mesmo com erro de busca.
+
+4- Message
+
+Resquisição: POST http://localhost/WorkOut/message/?id_user_send=2&id_user_receive=1&message=Mensagem 
+Status: OK
+Descrição insere. Porém insere pelos ids.
+
+Resquisição: POST http://localhost/WorkOut/message/?id_user_send=2&id_user_receive=&message=Mensagem 
+Status: OK
+Descrição: A validação funciona.
+
+Resquisição: GET http://localhost/WorkOut/message/?id_user_send=2
+Status: OK
+Descrição: Funciona.
+
+5-Friend
+
+Resquisição: POST http://localhost/WorkOut/friend/?id_friend=5&id_user=3&id_user_friend=2
+Status erro
+Descrição: Não consegui adicionar
+
+
+Resquisição: POST http://localhost/WorkOut/friend/?id_user=3&id_user_friend=2
+Status erro
+Descrição: Não consegui adicionar
+
+
+Resquisição: GET
+Status: banco sem dados
+Descrição: Não retorna pois bancos não tem dados e não consigo adicionar.
+
+
