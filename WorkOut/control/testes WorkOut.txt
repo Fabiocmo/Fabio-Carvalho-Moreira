@@ -1,23 +1,66 @@
-insert new user
-http://localhost/WorkOut/user/?name=Fabio5&last_name=Carvalho&email=teste@email&birthdate=1993-10-25&phone=9999999999&pass=jklsjdf
+User
+Requisição: POST http://localhost/WorkOut/user/?name=Fabio5&last_name=Carvalho&email=teste@email&birthdate=1993-10-25&phone=9999999999&pass=jklsjdf
+Status: OK
+Descição:
 
-select user
-http://localhost/WorkOut/user/?name=Fabio
+Requisição: GET http://localhost/WorkOut/user/?name=Fabio
+Status: OK
+Descrição: 
+
+Requisição: PUT http://localhost/WorkOut/user/?name=Fabio
+Status: OK
+Descrição: 
+
 ----------------------------------------------------------------------------------------------------------------------------
-insert message
-http://localhost/WorkOut/message/?id_user_send=2&id_user_receive=1&message=Mensagem Teste
+Message
+Requisição: POST http://localhost/WorkOut/message/?id_user_send=2&id_user_receive=1&message=Mensagem Teste
+Status: OK
+Descrição: 
 
-select message
-http://localhost/WorkOut/message/?id_user_send=1
+Requisição: GET http://localhost/WorkOut/message/?id_user_send=2
+Status: OK
+Descrição: 
+
+
+Requisição: DELETE http://localhost/WorkOut/message/?id=1
+Status: OK
+Descrição: 
+
 ----------------------------------------------------------------------------------------------------------------------------
-insert new chart exercise
-http://localhost/WorkOut/chartexercise/?name=Fabio&expire_date=2016-07-02&chart_exercise=trapezio
+Chart Exercise
+Requisição: POST http://localhost/WorkOut/chartexercise/?name=Fabio&expire_date=2016-07-02&chart_exercise=trapezio
+Status: OK
+Descrição: 
 
+Requisição: GET http://localhost/WorkOut/chartexercise/?id=1
+Status: OK
+Descrição: 
 select chart exercise
-http://localhost/WorkOut/chartexercise/?name=Fabio
----------------------------------------------------------------------------------------------------------------------------------
-insert publication
-http://localhost/WorkOut/publication/?id_user=2&datee=2016-05-07&hour=10:22:22&publication=primeira
 
-select publication
-http://localhost/WorkOut/publication/?id_user=1
+Requisição: PUT http://localhost/WorkOut/chartexercise/?chartexercise=Atualizando&id=1
+Status: OK
+Descrição: 
+
+Requisição: DELETE http://localhost/WorkOut/chartexercise/?id=1
+Status: OK
+Descrição: 
+
+---------------------------------------------------------------------------------------------------------------------------------
+Publication
+Requisição: POST http://localhost/WorkOut/publication/?id_user=2&datee=2016-05-07&hour=10:22:22&publication=primeira
+Status: OK
+Descrição: 
+
+Requisição: GET http://localhost/WorkOut/publication/?id_user=1
+Status: OK
+Descrição: 
+
+Requisição: PUT http://localhost/WorkOut/publication/?publication=Atualizando&id=36
+Status: OK
+Descrição: 
+
+Requisição: DELETE http://localhost/WorkOut/publication/?id=36
+Status: OK
+Descrição: 
+
+---------------------------------------------------------------------------------------------------------------------------------

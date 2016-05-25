@@ -11,7 +11,7 @@ class UserController
 	public function register($request)
 	{
 		$params = $request->get_params();
-		if ($this->isValid($params))
+		if ($this->isValidParams($params))
 		{
 		$user = new User($params["name"],
 				         $params["last_name"],
@@ -27,7 +27,7 @@ class UserController
 	
 		} else
 		    {
-		    echo "Erro 400: Bad Request ";
+		    echo "Erro 400";
 		    }
 		
 	}
@@ -74,17 +74,39 @@ class UserController
 		return substr($criteria, 0, -4);	
 	}
 
-	
-    private function isValid($params)
+	public function update($request)
     {
-    	foreach ($params as $key => $value) 
-    	{
-    		if($value==null)
-    		{
-    			return false;
-    		}
-    	}
-    	return true;        
+        $params = $request->get_params();
+        $db = new DatabaseConnector("localhost", "workout", "mysql", "", "root", "");
+        $conn = $db->getConnection();
+        return $conn->query($this->generateUpdateQuery($params));
     }
-	
+
+    private function generateUpdateQuery($params)
+    {
+        $crit = $this->generateUpdateCriteria($params);
+        return "UPDATE user SET " . $crit . " WHERE id = '" . $params["id"] . "'";
+    }
+
+    private function generateUpdateCriteria($params)
+    {
+        $criteria = "";
+        foreach ($params as $key => $value)
+        {
+            $criteria = $criteria.$key." = '".$value."' ,";
+        }
+        return substr($criteria, 0, -2);
+    }
+
+    private function isValidKeys($params)
+    {
+        $keys = array_keys($params);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+
+        if (empty($diff2) && empty($diff1))
+			return true;
+
+            return false;
+    }   	
 }

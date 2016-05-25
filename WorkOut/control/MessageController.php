@@ -6,12 +6,13 @@ include_once "database/DatabaseConnector.php";
 
 class MessageController
 {
-private $requiredParameters = array('id_user_send', 'id_user_receive', 'message');
+		private $requiredParameters = ['id_user_send', 'id_user_receive', 'message'];
 
 	public function register($request)
 	{
 		$params = $request->get_params();
-		if ($this->isValid($params)){
+		if ($this->isValidParams($params))
+		{
 		$message = new Message($params["id_user_send"],
 							   $params["id_user_receive"],
 							   $params["message"]);
@@ -63,17 +64,28 @@ private $requiredParameters = array('id_user_send', 'id_user_receive', 'message'
 		}
 
 		return substr($criteria, 0, -4);	
-	}
-	
-    private function isValid($params)
+	}	
+
+    public function delete($request)
+	{
+        $params = $request->get_params();
+        $db = new DatabaseConnector("localhost", "workout", "mysql", "", "root", "");
+        $conn = $db->getConnection();
+        $result = $conn->prepare("DELETE FROM message WHERE id = ?");
+        $result->bindParam(1, $params['id']);
+        $result->execute();
+        return $result;
+    }	
+    
+    private function isValidKeys($params)
     {
-    	foreach ($params as $key => $value) 
-    	{
-    		if($value==null)
-    		{
-    			return false;
-    		}
-    	}
-    	return true;        
-    }
+        $keys = array_keys($params);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+
+        if (empty($diff2) && empty($diff1))
+			return true;
+
+            return false;
+    }    
 }

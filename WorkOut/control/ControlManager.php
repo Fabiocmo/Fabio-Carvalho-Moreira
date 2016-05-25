@@ -22,7 +22,7 @@ class ControlManager
 			    $_SERVER["REQUEST_METHOD"],
 			    $_SERVER["REQUEST_URI"],
 			    $_SERVER["SERVER_ADDR"]);
-
+		
 		return $this->route_method($request);
 	}	
 

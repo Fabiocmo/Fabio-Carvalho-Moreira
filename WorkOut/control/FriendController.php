@@ -8,7 +8,11 @@ class FriendController
 {
 	public function register($request)
 	{
+		private $requiredParameters = ['id_user', 'id_user_friend'];
+
 		$params = $request->get_params();
+		if ($this->isValidParams($params))
+		{
 		$friend = new Friend($params["id_user"],
 				             $params["id_user_friend"]);		         
 				         
@@ -18,6 +22,10 @@ class FriendController
 		
 		
 	    return $conn->query($this->generateInsertQuery($friend));
+	    } else
+		    {
+		    echo "Erro 400";
+		    }
 	}
 
 	private function generateInsertQuery($friend)
@@ -37,7 +45,7 @@ class FriendController
 
 		$conn = $db->getConnection();
 
-		$result = $conn->query("SELECT id_friend FROM friend WHERE ".$crit);
+		$result = $conn->query("SELECT id FROM friend WHERE ".$crit);
 
 		//foreach($result as $row) 
 
@@ -55,16 +63,28 @@ class FriendController
 
 		return substr($criteria, 0, -4);	
 	}
+	
+    public function delete($request)
+	{
+        $params = $request->get_params();
+        $db = new DatabaseConnector("localhost", "workout", "mysql", "", "root", "");
+        $conn = $db->getConnection();
+        $result = $conn->prepare("DELETE FROM friend WHERE id = ?");
+        $result->bindParam(1, $params['id']);
+        $result->execute();
+        return $result;
+    }
+    
 
-    private function isValid($params)
+    private function isValidKeys($params)
     {
-    	foreach ($params as $key => $value) 
-    	{
-    		if($value==null)
-    		{
-    			return false;
-    		}
-    	}
-    	return true;        
+        $keys = array_keys($params);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+
+        if (empty($diff2) && empty($diff1))
+			return true;
+
+            return false;
     }
 }
