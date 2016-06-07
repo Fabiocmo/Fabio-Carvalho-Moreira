@@ -6,21 +6,19 @@ include_once "database/DatabaseConnector.php";
 
 class FriendController
 {
+	private $requiredParameters = ['id_user', 'id_user_friend'];
+
 	public function register($request)
 	{
-		private $requiredParameters = ['id_user', 'id_user_friend'];
-
+		
 		$params = $request->get_params();
 		if ($this->isValidParams($params))
 		{
-		$friend = new Friend($params["id_user"],
-				             $params["id_user_friend"]);		         
+			$friend = new Friend($params["id_user"],
+				                 $params["id_user_friend"]);		         
 				         
 		$db = new DatabaseConnector("localhost", "workout", "mysql", "", "root", "");
-
-		$conn = $db->getConnection();
-		
-		
+		$conn = $db->getConnection();		
 	    return $conn->query($this->generateInsertQuery($friend));
 	    } else
 		    {
@@ -31,7 +29,7 @@ class FriendController
 	private function generateInsertQuery($friend)
 	{
 		$query =  "INSERT INTO friend (id_user, id_user_friend) VALUES ('".$friend->getIdUser()."','".
-					                                                       $friend->getIdUserFriend()."')";								
+					                                                       $friend->getIdUserFriend()."')";				
 
 		return $query;						
 	}
@@ -76,7 +74,7 @@ class FriendController
     }
     
 
-    private function isValidKeys($params)
+    private function isValidParams($params)
     {
         $keys = array_keys($params);
         $diff1 = array_diff($keys, $this->requiredParameters);

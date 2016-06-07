@@ -5,6 +5,7 @@ include_once "control/UserController.php";
 include_once "control/ChartExerciseController.php";
 include_once "control/PublicationController.php";
 include_once "control/MessageController.php";
+include_once "control/FriendController.php";
 
 class ResourceController
 {

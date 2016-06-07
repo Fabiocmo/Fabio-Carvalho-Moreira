@@ -77,7 +77,7 @@ class MessageController
         return $result;
     }	
     
-    private function isValidKeys($params)
+    private function isValidParams($params)
     {
         $keys = array_keys($params);
         $diff1 = array_diff($keys, $this->requiredParameters);

@@ -98,7 +98,7 @@ class UserController
         return substr($criteria, 0, -2);
     }
 
-    private function isValidKeys($params)
+    private function isValidParams($params)
     {
         $keys = array_keys($params);
         $diff1 = array_diff($keys, $this->requiredParameters);

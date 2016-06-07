@@ -6,14 +6,14 @@ include_once "database/DatabaseConnector.php";
 
 class ChartExerciseController
 {
-	private $requiredParameters = ['name', 'expire_date', 'chart_exercise'];
+	private $requiredParameters = ['email', 'expire_date', 'chart_exercise'];
 
 	public function register($request)
 	{
 		$params = $request->get_params();
 		if ($this->isValidParams($params))
 		{
-		$chartexercise = new ChartExercise ($params["name"],				         
+		$chartexercise = new ChartExercise ($params["email"],				         
 				                            $params["expire_date"],
 				                            $params["chart_exercise"]);				         
 
@@ -31,7 +31,7 @@ class ChartExerciseController
 
 	private function generateInsertQuery($chartexercise)
 	{
-		$query =  "INSERT INTO chartexercise (name, expire_date, chart_exercise) VALUES ('".$chartexercise->getName()."','".
+		$query =  "INSERT INTO chartexercise (email, expire_date, chart_exercise) VALUES ('".$chartexercise->getEmail()."','".
                                                                                             $chartexercise->getExpireDate()."','".
 		                                                                                    $chartexercise->getChartExercise()."')";
 
@@ -101,7 +101,7 @@ class ChartExerciseController
         return $result;
     }
 
-    private function isValidKeys($params)
+    private function isValidParams($params)
     {
         $keys = array_keys($params);
         $diff1 = array_diff($keys, $this->requiredParameters);

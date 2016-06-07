@@ -13,7 +13,7 @@ class PublicationController
 		$params = $request->get_params();
 		if ($this->isValidParams($params))
 		{
-		$publication = new User($params["id_user"],
+		$publication = new Publication($params["id_user"],
 				         $params["datee"],
 				         $params["hour"],
 				         $params["publication"]);
@@ -34,7 +34,7 @@ class PublicationController
 	private function generateInsertQuery($publication)
 	{
 		
-		$query =  "INSERT INTO publication (name, last_name, email, birthdate, phone, pass) VALUES ('".$publication->getIUser()."','".
+		$query =  "INSERT INTO publication (id_user, datee, hour, publication) VALUES ('".$publication->getIdUser()."','".
 					$publication->getDate()."','".
 					$publication->getHour()."','".
 					$publication->getPublication()."')";
@@ -106,7 +106,7 @@ class PublicationController
         return $result;
     }
 
-    private function isValidKeys($params)
+    private function isValidParams($params)
     {
         $keys = array_keys($params);
         $diff1 = array_diff($keys, $this->requiredParameters);

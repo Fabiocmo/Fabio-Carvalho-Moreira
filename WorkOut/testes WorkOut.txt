@@ -7,11 +7,26 @@ Requisição: GET http://localhost/WorkOut/user/?name=Fabio
 Status: OK
 Descrição: 
 
-Requisição: PUT http://localhost/WorkOut/user/?name=Fabio
+Requisição: PUT http://localhost/WorkOut/user/?name=FabioAtualizado&id=1
 Status: OK
 Descrição: 
 
-----------------------------------------------------------------------------------------------------------------------------
+Requisição: DELETE nao será implementado para deletar usuário
+------------------------------------------------------------------------------------------------------------------------------------
+Friend
+Requisição: POST http://localhost/WorkOut/user/?id_user=1&id_user_friend=2
+Status: OK
+Descição:
+
+Requisição: DELETE http://localhost/WorkOut/user/?name=Fabio5&last_name=Carvalho&email=teste@email&birthdate=1993-10-25&phone=9999999999&pass=jklsjdf
+Status: OK
+Descição:
+
+Requisição: PUT não será implementado para atualizar amigo
+
+Requisição: UPDATE não será implementado para atualizar amigo
+
+-------------------------------------------------------------------------------------------------------------------------------------
 Message
 Requisição: POST http://localhost/WorkOut/message/?id_user_send=2&id_user_receive=1&message=Mensagem Teste
 Status: OK
@@ -21,6 +36,7 @@ Requisição: GET http://localhost/WorkOut/message/?id_user_send=2
 Status: OK
 Descrição: 
 
+Requisição: PUT não será implementado para atualizar mensagens
 
 Requisição: DELETE http://localhost/WorkOut/message/?id=1
 Status: OK
@@ -28,7 +44,7 @@ Descrição:
 
 ----------------------------------------------------------------------------------------------------------------------------
 Chart Exercise
-Requisição: POST http://localhost/WorkOut/chartexercise/?name=Fabio&expire_date=2016-07-02&chart_exercise=trapezio
+Requisição: POST http://localhost/WorkOut/chartexercise/?email=Fabio@email&expire_date=2016-07-02&chart_exercise=trapezio
 Status: OK
 Descrição: 
 
@@ -51,7 +67,7 @@ Requisição: POST http://localhost/WorkOut/publication/?id_user=2&datee=2016-05-0
 Status: OK
 Descrição: 
 
-Requisição: GET http://localhost/WorkOut/publication/?id_user=1
+Requisição: GET http://localhost/WorkOut/publication/?id=1
 Status: OK
 Descrição: 
 
