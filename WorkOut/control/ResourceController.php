@@ -29,7 +29,7 @@ class ResourceController
 	{
 		return (new $this->controlMap[$request->get_resource()]())->search($request);
 	}
-	
+		
 	public function updateResource($request)
 	{
 		return (new $this->controlMap[$request->get_resource()]())->update($request);

@@ -6,7 +6,7 @@ include_once "database/DatabaseConnector.php";
 
 class ChartExerciseController
 {
-	private $requiredParameters = ['email', 'expire_date', 'chart_exercise'];
+	private $requiredParameters = ['email', 'expire_date', 'chart_exercise', 'segunda_feira', 'terca_feira', 'quarta_feira', 'quinta_feira', 'sexta_feira','sabado'];
 
 	public function register($request)
 	{
@@ -15,7 +15,13 @@ class ChartExerciseController
 		{
 		$chartexercise = new ChartExercise ($params["email"],				         
 				                            $params["expire_date"],
-				                            $params["chart_exercise"]);				         
+				                            $params["chart_exercise"],
+				                            $params["segunda_feira"],
+				                            $params["terca_feira"],
+				                            $params["quarta_feira"],
+				                            $params["quinta_feira"],
+				                            $params["sexta_feira"],
+				                            $params["sabado"]);				         
 
 		$db = new DatabaseConnector("localhost", "workout", "mysql", "", "root", "");
 
@@ -31,9 +37,8 @@ class ChartExerciseController
 
 	private function generateInsertQuery($chartexercise)
 	{
-		$query =  "INSERT INTO chartexercise (email, expire_date, chart_exercise) VALUES ('".$chartexercise->getEmail()."','".
-                                                                                            $chartexercise->getExpireDate()."','".
-		                                                                                    $chartexercise->getChartExercise()."')";
+		$query =  "INSERT INTO chartexercise (email, expire_date, chart_exercise, segunda_feira, terca_feira, quarta_feira, quinta_feira, sexta_feira, sabado) VALUES 
+		('".$chartexercise->getEmail()."','".$chartexercise->getExpireDate()."','".$chartexercise->getChartExercise()."','".$chartexercise->getSegundaFeira()."','".$chartexercise->getTercaFeira()."','".$chartexercise->getQuartaFeira()."','".$chartexercise->getQuintaFeira()."','".$chartexercise->getSextaFeira()."','".$chartexercise->getSabado()."')";
 
 		return $query;						
 	}
@@ -47,7 +52,7 @@ class ChartExerciseController
 
 		$conn = $db->getConnection();
 
-		$result = $conn->query("SELECT chart_exercise FROM chartexercise WHERE ".$crit);
+		$result = $conn->query("SELECT segunda_feira, terca_feira, quarta_feira, quinta_feira, sexta_feira, sabado FROM chartexercise WHERE ".$crit);
 
 		//foreach($result as $row) 
 
